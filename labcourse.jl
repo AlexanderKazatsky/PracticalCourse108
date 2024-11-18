@@ -275,7 +275,7 @@ end
 
 # ╔═╡ 10a82a9c-6bc9-49e6-8399-6172d903d97c
 begin
-	plot4 = plot([r[2] for r in rs1],[r[3] for r in rs1],xlabel="x", ylabel="y",title="y(x)",label="euler")
+	plot4 = plot([r[2] for r in rs1],[r[3] for r in rs1],xlabel="x", ylabel="y",title="y(x)",label="euler", aspect_ratio=1)
 	plot!([r[2] for r in rs2],[r[3] for r in rs2],label="predictor_corrector")
 	plot!([r[2] for r in rs3],[r[3] for r in rs3],label="runge_kutta_4")
 	savefig("y(x).png")
@@ -284,7 +284,7 @@ end
 
 # ╔═╡ e321b69e-e571-4c89-89f4-f3fb80df8961
 begin
-	plot5 = plot([r[2] for r in rs1],[r[3] for r in rs1],[r[1] for r in rs1],xlabel="x", ylabel="y",zlabel="t",title="(x,y)(t)",label="euler",legend=:topleft)
+	plot5 = plot([r[2] for r in rs1],[r[3] for r in rs1],[r[1] for r in rs1],xlabel="x", ylabel="y",zlabel="t",title="(x,y)(t)",label="euler",legend=:topright)
 	plot!([r[2] for r in rs2],[r[3] for r in rs2],[r[1] for r in rs2],label="predictor_corrector")
 	plot!([r[2] for r in rs3],[r[3] for r in rs3],[r[1] for r in rs3],label="runge_kutta_4")
 	savefig("xy(t).png")
@@ -293,21 +293,33 @@ end
 
 # ╔═╡ 7f3a078d-8820-4ba6-93a2-a1ddd2e3d85d
 begin
-	plot6 = plot([r[2] for r in rs1],[r[3] for r in rs1],[r[4] for r in rs1],xlabel="x", ylabel="y",zlabel="z",title="(x,y)(z)",label="euler",legend=:topleft)
+	plot6 = plot([r[2] for r in rs1],[r[3] for r in rs1],[r[4] for r in rs1],xlabel="x", ylabel="y",zlabel="z",title="(x,y)(z)",label="euler",legend=:topright)
 	plot!([r[2] for r in rs2],[r[3] for r in rs2],[r[4] for r in rs2],label="predictor_corrector")
 	plot!([r[2] for r in rs3],[r[3] for r in rs3],[r[4] for r in rs3],label="runge_kutta_4")
 	savefig("xy(z).png")
 	plot6
 end
 
+# ╔═╡ c1b98c4b-fcf2-435e-917e-60e137bc81a8
+
+
+# ╔═╡ 6cc1d910-6805-47a4-b0a0-41778ddfede7
+
+
 # ╔═╡ 06796fc4-4100-4e40-9065-5935531850e7
 begin
-	plot7 = plot([r[1] for r in rs1],[r[5] for r in rs1],xlabel="t", ylabel="Energy",title="En(t)",label="euler")
+	plot7 = plot([r[1] for r in rs1],[r[5] for r in rs1],xlabel="t", ylabel="Energy",title="En(t)",label="euler", ylims=(1,2))
 	plot!([r[1] for r in rs2],[r[5] for r in rs2],label="predictor_corrector")
 	plot!([r[1] for r in rs3],[r[5] for r in rs3],label="runge_kutta_4")
 	savefig("En(t).png")
 	plot7
 end
+
+# ╔═╡ 32a33021-2f72-49c8-9f04-314b8abd650d
+
+
+# ╔═╡ 6bf09599-8140-4177-8a53-7d33afd32941
+
 
 # ╔═╡ 4b24fe8b-f29b-45a8-90e7-07769f184a67
 begin
@@ -471,7 +483,7 @@ eff_inv = efficiency(accepted_samples_inv, num_samples)### Calculate efficiency 
 
 # ╔═╡ a86ea674-31a0-4285-9d33-84ffbdedeabd
 md"""
-# Exersice 3: Simulation of $J/\psi\rightarrow\mu^{+}\mu^{-}$ decay and reconstruction of muons momenta
+# Exersice 3: Simulation of $J/\psi\rightarrow\mu^{+}\mu^{-}$ decay and reconstruction of muon momenta
 """
 
 # ╔═╡ 2e8ccf97-d9f8-4683-8ad6-c9e2cdbbf80c
@@ -670,9 +682,6 @@ begin
 	println("pmu_minus = ", mean(pmu_minus), " ; ", "pmu_minus_sim = ", mean(pmu_minus_sim))
 	println("pmu_plus = ", mean(pmu_plus), " ; ", "pmu_plus_sim = ", mean(pmu_plus_sim))
 end
-
-# ╔═╡ d1a29783-35cb-46bb-9fa6-f235dfc3709d
-
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -2093,7 +2102,11 @@ version = "1.4.1+1"
 # ╠═10a82a9c-6bc9-49e6-8399-6172d903d97c
 # ╠═e321b69e-e571-4c89-89f4-f3fb80df8961
 # ╠═7f3a078d-8820-4ba6-93a2-a1ddd2e3d85d
+# ╠═c1b98c4b-fcf2-435e-917e-60e137bc81a8
+# ╠═6cc1d910-6805-47a4-b0a0-41778ddfede7
 # ╠═06796fc4-4100-4e40-9065-5935531850e7
+# ╠═32a33021-2f72-49c8-9f04-314b8abd650d
+# ╠═6bf09599-8140-4177-8a53-7d33afd32941
 # ╠═4b24fe8b-f29b-45a8-90e7-07769f184a67
 # ╠═e8f47304-1fde-4051-bae0-a366d93d465b
 # ╠═042212eb-684d-446b-9785-3c127ad9f732
@@ -2124,6 +2137,5 @@ version = "1.4.1+1"
 # ╠═3ba42e77-8b8e-49d7-9def-ad35a56bea19
 # ╠═230f7f9a-d2b8-4e56-ae57-5e1aafa41678
 # ╠═646b6d4c-f121-4023-911c-0ca929902eeb
-# ╠═d1a29783-35cb-46bb-9fa6-f235dfc3709d
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
